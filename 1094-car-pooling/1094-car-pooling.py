@@ -7,7 +7,6 @@ class Solution:
         for i,j,k in trips:
             sol[j]+=i
             sol[k]-=i
-        print(sol)
         prev = sol[0]
         if prev>capacity:
             return False
