@@ -5,13 +5,12 @@ class Solution:
             maxi = max(k,maxi)
         sol = [0 for i in range(maxi+1)]
         for i,j,k in trips:
+            if i>capacity:
+                return False
             sol[j]+=i
             sol[k]-=i
-        prev = sol[0]
-        if prev>capacity:
-            return False
-        for i in sol[1:]:
-            prev += i
-            if prev > capacity:
+        for i in range(1,len(sol)):
+            sol[i] += sol[i-1]
+            if sol[i] > capacity:
                 return False
         return True
